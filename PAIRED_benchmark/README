@@ -1,0 +1,43 @@
+# Paired Benchmark
+
+This folder contains the scripts, latent representations, benchmark results and figure-generation code for the fully paired PBMC RNA-ATAC integration benchmark.
+
+In the fully paired setting, every cell contains both RNA and ATAC measurements. This represents the best-case condition for multi-omics integration and was used to evaluate whether different methods can preserve biological cell-type structure when complete multi-omic information is available.
+
+## Overview
+
+This benchmark compares three multi-omics integration methods:
+
+- **MultiVI**
+- **GLUE**
+- **MOFA+**
+
+The benchmark focuses mainly on biological conservation and clustering agreement in the integrated latent space. The same marker-based PBMC cell-type annotation was used across all methods to ensure consistent comparison.
+
+## Folder structure
+
+```text
+PAIRED_benchmark/
+├── paired_GLUE/
+│   ├── PAIRED_run_glue.py
+│   ├── glue_latent.csv
+│   └── glue_latent.h5ad
+│
+├── paired_MOFA/
+│   ├── PAIRED_run_mofa.py
+│   ├── mofa_latent.csv
+│   └── mofa_latent.h5ad
+│
+├── paired_MULTIVI/
+│   ├── PAIRED_run_MultiVI.py
+│   ├── multivi_full_latent.csv
+│   ├── multivi_full_latent.h5ad
+│   └── multivi_full_latent_annotated_final.h5ad
+│
+├── generate_paired_figures.py
+├── run_paired_benchmark.py
+├── strict_paired_benchmark_metrics.csv
+├── strict_paired_celltypewise_knn.csv
+├── paired_ari_summary.csv
+├── paired_immune_programme_smoothness_metrics.csv
+└── paired_immune_programme_smoothness_by_programme.csv
