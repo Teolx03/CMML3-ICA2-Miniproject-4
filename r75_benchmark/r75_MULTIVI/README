@@ -1,0 +1,123 @@
+# r75 Benchmark
+
+This folder contains the scripts and output files for the r75 missing-modality PBMC RNA-ATAC integration benchmark.
+
+In the r75 setting, only 25% of cells remain paired, while the remaining cells are split into RNA-only and ATAC-only groups. This setting was used to compare the robustness of MultiVI, GLUE and MOFA+ under simulated missing-modality conditions.
+
+## Folder structure
+
+```text
+r75_benchmark/
+├── r75_GLUE/
+│   ├── r75_run_glue.py
+│   ├── glue_r75_latent.csv
+│   └── glue_r75_latent.h5ad
+│
+├── r75_MOFA/
+│   ├── r75_run_mofa.py
+│   ├── mofa_r75_latent.csv
+│   └── mofa_r75_latent.h5ad
+│
+├── r75_MULTIVI/
+│   ├── prepare_r75_data.py
+│   ├── r75_modality_status.csv
+│   ├── run_multivi_r75.py
+│   ├── multivi_r75_latent.csv
+│   └── multivi_r75_latent.h5ad
+│
+├── generate_r75_figures.py
+├── run_r75_benchmark.py
+├── strict_r75_benchmark_metrics.csv
+├── strict_r75_celltypewise_knn.csv
+├── r75_ari_summary.csv
+├── r75_direct_rna_to_atac_agreement_K15_summary.csv
+├── r75_direct_rna_to_atac_agreement_K15_celltypewise.csv
+├── r75_immune_programme_smoothness_metrics.csv
+└── r75_immune_programme_smoothness_by_programme.csv
+```
+
+## Method folders
+
+### `r75_MULTIVI/`
+
+Contains the script and outputs for preparing the r75 dataset and running MultiVI under the r75 setting.
+
+Main files:
+
+```text
+prepare_r75_data.py
+r75_modality_status.csv
+run_multivi_r75.py
+multivi_r75_latent.csv
+multivi_r75_latent.h5ad
+```
+
+### `r75_GLUE/`
+
+Contains the script and outputs for running GLUE under the r75 setting.
+
+Main files:
+
+```text
+r75_run_glue.py
+glue_r75_latent.csv
+glue_r75_latent.h5ad
+```
+
+### `r75_MOFA/`
+
+Contains the script and outputs for running MOFA+ under the r75 setting.
+
+Main files:
+
+```text
+r75_run_mofa.py
+mofa_r75_latent.csv
+mofa_r75_latent.h5ad
+```
+
+## Script-output summary
+
+| Script | Main outputs |
+|---|---|
+| `r75_MULTIVI/prepare_r75_data.py` | `r75_modality_status.csv` |
+| `r75_MULTIVI/run_multivi_r75.py` | `multivi_r75_latent.csv`, `multivi_r75_latent.h5ad` |
+| `r75_GLUE/r75_run_glue.py` | `glue_r75_latent.csv`, `glue_r75_latent.h5ad` |
+| `r75_MOFA/r75_run_mofa.py` | `mofa_r75_latent.csv`, `mofa_r75_latent.h5ad` |
+| `run_r75_benchmark.py` | `strict_r75_benchmark_metrics.csv`, `strict_r75_celltypewise_knn.csv`, immune programme smoothness CSV files |
+| `generate_r75_figures.py` | r75 UMAPs and benchmark figures |
+
+## Benchmark outputs
+
+| File | Description |
+|---|---|
+| `strict_r75_benchmark_metrics.csv` | Main r75 benchmark metrics for MultiVI, GLUE and MOFA+ |
+| `strict_r75_celltypewise_knn.csv` | Cell-type-wise KNN purity results |
+| `r75_ari_summary.csv` | Supplementary ARI clustering-agreement results |
+| `r75_direct_rna_to_atac_agreement_K15_summary.csv` | Direct RNA-to-ATAC agreement summary using K = 15 |
+| `r75_direct_rna_to_atac_agreement_K15_celltypewise.csv` | Cell-type-wise direct RNA-to-ATAC agreement results |
+| `r75_immune_programme_smoothness_metrics.csv` | Overall immune programme smoothness results |
+| `r75_immune_programme_smoothness_by_programme.csv` | Immune programme smoothness results separated by programme |
+
+## Metrics
+
+The r75 benchmark mainly used:
+
+- NMI
+- Balanced silhouette score
+- Balanced KNN purity
+- Cross-modal KNN purity
+- Cross-modal cell-type agreement
+- KNN modality entropy
+- Same-modality enrichment
+- Direct RNA-to-ATAC agreement
+- ARI
+- Immune programme smoothness
+
+## Notes
+
+- `r75_modality_status.csv` records whether each cell is paired, RNA-only or ATAC-only.
+- The same marker-based PBMC cell-type annotation was used across all methods.
+- Leiden clusters were generated separately for each method.
+- UMAPs are used for visualization and should not be compared only by shape.
+- The r75 benchmark was compared with the paired benchmark to assess robustness under missing-modality conditions.
