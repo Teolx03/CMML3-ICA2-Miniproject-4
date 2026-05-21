@@ -9,8 +9,21 @@ In the paired setting, each cell has both RNA and ATAC measurements. This settin
 ```text
 PAIRED_benchmark/
 ├── paired_GLUE/
+│   ├── PAIRED_run_glue.py
+│   ├── glue_latent.csv
+│   └── glue_latent.h5ad
+│
 ├── paired_MOFA/
+│   ├── PAIRED_run_mofa.py
+│   ├── mofa_latent.csv
+│   └── mofa_latent.h5ad
+│
 ├── paired_MULTIVI/
+│   ├── PAIRED_run_MultiVI.py
+│   ├── multivi_full_latent.csv
+│   ├── multivi_full_latent.h5ad
+│   └── multivi_full_latent_annotated_final.h5ad
+│
 ├── generate_paired_figures.py
 ├── run_paired_benchmark.py
 ├── strict_paired_benchmark_metrics.csv
