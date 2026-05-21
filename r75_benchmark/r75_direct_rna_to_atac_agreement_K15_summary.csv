@@ -1,0 +1,4 @@
+setting,method,k,n_rna_only,n_atac_only,raw_direct_rna_to_atac_agreement,balanced_direct_rna_to_atac_agreement
+r75,MultiVI,15,3607,3607,0.9213196562240089,0.8400763531520303
+r75,GLUE,15,3607,3607,0.9326125127067739,0.8797112337131437
+r75,MOFA+,15,3607,3607,0.9225210239349414,0.8301468789270837

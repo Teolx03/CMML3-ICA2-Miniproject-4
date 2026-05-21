@@ -1,0 +1,16 @@
+setting,method,programme,immune_programme_smoothness
+r75,MultiVI,T_cell_programme,0.5693995707150779
+r75,MultiVI,Cytotoxic_programme,0.32939375529325543
+r75,MultiVI,B_cell_programme,0.43573749775790094
+r75,MultiVI,Monocyte_inflammatory_programme,0.46602214672441633
+r75,MultiVI,Antigen_presentation_programme,0.6259939161018466
+r75,GLUE,T_cell_programme,0.5731553423990232
+r75,GLUE,Cytotoxic_programme,0.2836859444001884
+r75,GLUE,B_cell_programme,0.4239185536462453
+r75,GLUE,Monocyte_inflammatory_programme,0.4520020453607138
+r75,GLUE,Antigen_presentation_programme,0.6213241327211332
+r75,MOFA+,T_cell_programme,0.6071048082881338
+r75,MOFA+,Cytotoxic_programme,0.2782723265389248
+r75,MOFA+,B_cell_programme,0.411023773899716
+r75,MOFA+,Monocyte_inflammatory_programme,0.4661656739286246
+r75,MOFA+,Antigen_presentation_programme,0.6061158415148905

@@ -1,0 +1,4 @@
+setting,method,leiden_column,ARI
+r75,MultiVI,multivi_r75_leiden,0.13578117748470456
+r75,GLUE,glue_r75_leiden,0.25592161918432665
+r75,MOFA+,mofa_r75_leiden,0.16672770381358332
