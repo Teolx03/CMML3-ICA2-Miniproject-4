@@ -1,4 +1,0 @@
-setting,method,rep_key,overall_immune_programme_smoothness
-paired,MultiVI,X,0.48318022321165
-paired,GLUE,X,0.45425016635821774
-paired,MOFA+,X,0.4320101303407878
