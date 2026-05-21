@@ -1,4 +1,0 @@
-setting,method,leiden_column,ARI
-paired,MultiVI,multivi_leiden,0.13097239694061716
-paired,GLUE,glue_leiden,0.23183277063473828
-paired,MOFA+,mofa_leiden,0.2074599632315798
