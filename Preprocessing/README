@@ -1,0 +1,72 @@
+# Preprocessing
+
+This folder contains the preprocessing-related scripts and files used before running the paired and r75 benchmarks.
+
+The preprocessing step prepares the PBMC RNA-ATAC multiome dataset for downstream integration analysis. The r75 missing-modality split was also prepared from the preprocessed paired dataset.
+
+## Folder structure
+
+```text
+Preprocessing/
+├── Preprocessed.py
+├── Prepare_r75_data.py
+└── r75_modality_status.csv
+```
+
+## Files
+
+### `Preprocessed.py`
+
+This script preprocesses the raw PBMC multiome dataset before integration analysis.
+
+Main steps include:
+
+- loading the raw 10x PBMC multiome dataset
+- separating RNA and ATAC modalities
+- applying quality control
+- preprocessing RNA data
+- preprocessing ATAC data
+- saving the processed multiome object for downstream analysis
+
+### `Prepare_r75_data.py`
+
+This script prepares the r75 missing-modality setting from the preprocessed paired dataset.
+
+In the r75 setting:
+
+- 25% of cells remain paired
+- 37.5% of cells are RNA-only
+- 37.5% of cells are ATAC-only
+
+### `r75_modality_status.csv`
+
+This file records the modality status of each cell in the r75 benchmark.
+
+Each cell is assigned to one of the following groups:
+
+```text
+paired
+rna_only
+atac_only
+```
+
+## Script-output summary
+
+| Script | Main output |
+|---|---|
+| `Preprocessed.py` | Preprocessed PBMC multiome dataset used for downstream analysis |
+| `Prepare_r75_data.py` | `r75_modality_status.csv` |
+
+## Output usage
+
+| Output | Used in |
+|---|---|
+| Preprocessed PBMC multiome dataset | `PAIRED_benchmark/` |
+| `r75_modality_status.csv` | `r75_benchmark/` |
+
+## Notes
+
+- The paired benchmark used the complete preprocessed PBMC multiome dataset.
+- The r75 benchmark was generated from the same preprocessed dataset.
+- Cell-type annotation was performed downstream after integration.
+- `r75_modality_status.csv` was used to identify whether each cell was paired, RNA-only or ATAC-only during the r75 benchmark.
