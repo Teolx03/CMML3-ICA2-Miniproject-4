@@ -1,39 +1,16 @@
 # Paired Benchmark
 
-This folder contains the scripts, latent representations, benchmark results and figure-generation code for the fully paired PBMC RNA-ATAC integration benchmark.
+This folder contains the scripts and output files for the fully paired PBMC RNA-ATAC integration benchmark.
 
-In the fully paired setting, every cell contains both RNA and ATAC measurements. This represents the best-case condition for multi-omics integration and was used to evaluate whether different methods can preserve biological cell-type structure when complete multi-omic information is available.
-
-## Overview
-
-This benchmark compares three multi-omics integration methods:
-
-- **MultiVI**
-- **GLUE**
-- **MOFA+**
-
-The benchmark focuses mainly on biological conservation and clustering agreement in the integrated latent space. The same marker-based PBMC cell-type annotation was used across all methods to ensure consistent comparison.
+In the paired setting, each cell has both RNA and ATAC measurements. This setting was used to compare the integration performance of MultiVI, GLUE and MOFA+ under complete multi-omics data availability.
 
 ## Folder structure
 
 ```text
 PAIRED_benchmark/
 ├── paired_GLUE/
-│   ├── PAIRED_run_glue.py
-│   ├── glue_latent.csv
-│   └── glue_latent.h5ad
-│
 ├── paired_MOFA/
-│   ├── PAIRED_run_mofa.py
-│   ├── mofa_latent.csv
-│   └── mofa_latent.h5ad
-│
 ├── paired_MULTIVI/
-│   ├── PAIRED_run_MultiVI.py
-│   ├── multivi_full_latent.csv
-│   ├── multivi_full_latent.h5ad
-│   └── multivi_full_latent_annotated_final.h5ad
-│
 ├── generate_paired_figures.py
 ├── run_paired_benchmark.py
 ├── strict_paired_benchmark_metrics.csv
@@ -41,3 +18,82 @@ PAIRED_benchmark/
 ├── paired_ari_summary.csv
 ├── paired_immune_programme_smoothness_metrics.csv
 └── paired_immune_programme_smoothness_by_programme.csv
+```
+
+## Method folders
+
+### `paired_MULTIVI/`
+
+Contains the script and outputs for running MultiVI on the paired dataset.
+
+Main files:
+
+```text
+PAIRED_run_MultiVI.py
+multivi_full_latent.csv
+multivi_full_latent.h5ad
+multivi_full_latent_annotated_final.h5ad
+```
+
+### `paired_GLUE/`
+
+Contains the script and outputs for running GLUE on the paired dataset.
+
+Main files:
+
+```text
+PAIRED_run_glue.py
+glue_latent.csv
+glue_latent.h5ad
+```
+
+### `paired_MOFA/`
+
+Contains the script and outputs for running MOFA+ on the paired dataset.
+
+Main files:
+
+```text
+PAIRED_run_mofa.py
+mofa_latent.csv
+mofa_latent.h5ad
+```
+
+## Script-output summary
+
+| Script | Main outputs |
+|---|---|
+| `paired_MULTIVI/PAIRED_run_MultiVI.py` | `multivi_full_latent.csv`, `multivi_full_latent.h5ad`, `multivi_full_latent_annotated_final.h5ad` |
+| `paired_GLUE/PAIRED_run_glue.py` | `glue_latent.csv`, `glue_latent.h5ad` |
+| `paired_MOFA/PAIRED_run_mofa.py` | `mofa_latent.csv`, `mofa_latent.h5ad` |
+| `run_paired_benchmark.py` | `strict_paired_benchmark_metrics.csv`, `strict_paired_celltypewise_knn.csv`, immune programme smoothness CSV files |
+| `generate_paired_figures.py` | Paired UMAPs and benchmark figures |
+
+## Benchmark outputs
+
+| File | Description |
+|---|---|
+| `strict_paired_benchmark_metrics.csv` | Main paired benchmark metrics for MultiVI, GLUE and MOFA+ |
+| `strict_paired_celltypewise_knn.csv` | Cell-type-wise KNN purity results |
+| `paired_ari_summary.csv` | Supplementary ARI clustering-agreement results |
+| `paired_immune_programme_smoothness_metrics.csv` | Overall immune programme smoothness results |
+| `paired_immune_programme_smoothness_by_programme.csv` | Immune programme smoothness results separated by programme |
+
+## Metrics
+
+The paired benchmark mainly used:
+
+- NMI
+- Balanced silhouette score
+- Balanced KNN purity
+- ARI
+- Immune programme smoothness
+
+The main report focused on NMI, balanced silhouette score and balanced KNN purity as the primary cell-type conservation metrics.
+
+## Notes
+
+- The same marker-based PBMC cell-type annotation was used across all methods.
+- Leiden clusters were generated separately for each method.
+- UMAPs are used for visualization and should not be compared only by shape.
+- The paired benchmark was used as the complete-data baseline before the r75 missing-modality benchmark.
